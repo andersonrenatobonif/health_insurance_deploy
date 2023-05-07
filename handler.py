@@ -19,7 +19,7 @@ def health_predict():
     
     if test_json:
         if isinstance(test_json, dict):
-            test_raw = pd.DataFrame(test_json, index[0])
+            test_raw = pd.DataFrame(test_json, index=[0])
             
         else:
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
@@ -29,11 +29,11 @@ def health_predict():
         
         pipeline = health()
         
-        df1 = pipeline.data_cleaning(test_raw)
+        #df1 = pipeline.data_cleaning(test_raw)
         
         #df2 = pipeline.feature_engineering(df1)
         
-        df2 = pipeline.data_preparation(df1)
+        df2 = pipeline.data_preparation(test_raw)
         
         df_response = pipeline.get_predictions(model, test_raw, df2)
         

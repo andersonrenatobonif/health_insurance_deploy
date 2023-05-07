@@ -15,13 +15,13 @@ class health (object):
         return
     
     
+
     def data_cleaning(self, df):
         cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
                  'previously_insured', 'annual_premium', 'vintage', 'driving_license',
                  'vehicle_age', 'vehicle_damage']
         
-        df.columns = cols
-        
+
         df['time_of_customer'] = (df['vintage'].apply(lambda x: 'new' if x < 50 else 'moderate' 
                                                        if x < 100 else 'medium' 
                                                        if x < 150 else 'professional' 
@@ -30,9 +30,7 @@ class health (object):
         
         return df
         
-        
-   
-    
+
     def data_preparation(self, df1):
         
         # age
