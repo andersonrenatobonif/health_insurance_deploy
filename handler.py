@@ -5,7 +5,7 @@ from flask          import Flask, request, Response
 from health.Health  import health
 
 #loading model
-path = 'C:/Users/anderson.bonifacio_i/Desktop/Dados/cds/health_insurance/health_insurance_deploy'
+path = 'C:/Users/anderson.bonifacio_i/Desktop/Dados/cds/health_insurance/health_insurance_analysis/'
 model = pickle.load(open(path + 'model/model_health.pkl', 'rb'))
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ def health_predict():
             test_raw = pd.DataFrame(test_json, index[0])
             
         else:
-            test_raw = pd.Dataframe(test_json, columns=test_json[0].keys())
+            test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
             
             
         #instance health class
@@ -30,9 +30,11 @@ def health_predict():
         
         df1 = pipeline.data_cleaning(test_raw)
         
+        #df2 = pipeline.feature_engineering(df1)
+        
         df2 = pipeline.data_preparation(df1)
         
-        df_response = pipeline.get_predictions(df2)
+        df_response = pipeline.get_predictions(model, test_raw, df2)
         
         return df_response
     
@@ -41,5 +43,4 @@ def health_predict():
     	return Response( '{}', status=200, mimetype='application/json' )
 
 if __name__ == '__main__':
-    port = os.environ.get( 'PORT', 5000)
-    app.run(host = '0.0.0.0', port = port)
+    app.run('0.0.0.0', debug=True)
