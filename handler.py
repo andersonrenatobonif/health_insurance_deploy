@@ -19,7 +19,7 @@ def health_predict():
     
     if test_json:
         if isinstance(test_json, dict):
-            test_raw = pd.DataFrame(test_json, index[0])
+            test_raw = pd.DataFrame(test_json, index=[0])
             
         else:
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
