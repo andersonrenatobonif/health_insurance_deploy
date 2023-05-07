@@ -15,19 +15,19 @@ class health (object):
         return
     
     
-    def data_cleaning(self, df):
-        cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
-                 'previously_insured', 'annual_premium', 'vintage', 'driving_license',
-                 'vehicle_age', 'vehicle_damage']
+    #def data_cleaning(self, df):
+     #   cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
+      #           'previously_insured', 'annual_premium', 'vintage', 'driving_license',
+       #          'vehicle_age', 'vehicle_damage']
         
-        df.columns = cols
+        #df.columns = cols
         
-        df['region_code'] = df['region_code'].astype(int)
-        df['policy_sales_channel'] = df['policy_sales_channel'].astype(int)
+        #df['region_code'] = df['region_code'].astype(int)
+        #df['policy_sales_channel'] = df['policy_sales_channel'].astype(int)
         
         
         
-        return df
+        #return df
     
       
         
