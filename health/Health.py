@@ -18,7 +18,7 @@ class health (object):
     def data_cleaning(self, df):
         cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
                  'previously_insured', 'annual_premium', 'vintage', 'driving_license',
-                 'vehicle_age', 'vehicle_damage', 'response']
+                 'vehicle_age', 'vehicle_damage']
         
         df.columns = cols
         
