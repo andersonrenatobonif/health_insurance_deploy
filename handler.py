@@ -6,7 +6,7 @@ from flask          import Flask, request, Response
 from health.Health  import health
 
 #loading model
-path = 'C:/Users/anderson.bonifacio_i/Desktop/Dados/cds/health_insurance/health_insurance_analysis/'
+path = ''
 model = pickle.load(open(path + 'model/model_health.pkl', 'rb'))
 
 app = Flask(__name__)
