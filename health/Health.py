@@ -28,12 +28,6 @@ class health (object):
                                                        if x < 200 else 'expert' 
                                                        if x < 250 else 'old'))
         
-        df['vehicle_age'] =  (df['vehicle_age'].apply( lambda x: 'over_2_years' if x == '> 2 Years' 
-                                                      else 'between_1_2_year' 
-                                                      if x == '1-2 Year' 
-                                                      else 'below_1_year' ))
-        
-                
         return df
         
         
@@ -83,8 +77,9 @@ class health (object):
     
     def get_predictions(self, model, original_data, test_data):
         
-        pred = model.predict(test_data)
         
-        original_data['score'] = pred
+        pred = model.predict_proba(test_data)
+        
+        original_data['score'] = pred[:, 1].tolist()
         
         return original_data.to_json(orient='records', date_format='iso')
