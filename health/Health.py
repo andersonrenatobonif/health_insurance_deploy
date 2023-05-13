@@ -28,6 +28,8 @@ class health (object):
                                                        if x < 200 else 'expert' 
                                                        if x < 250 else 'old'))
         
+        df['vehicle_age'] = df['vehicle_age'].apply(lambda x: '1_year' if x == '< 1 Year' else '1_2_year' if x == '1-2 Year' else '2_years+')
+        
         return df
         
         
