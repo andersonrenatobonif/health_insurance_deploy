@@ -5,7 +5,7 @@ import numpy as pd
 
 class health (object):
     def __init__(self):
-        self.home_path              = 'C:/Users/anderson.bonifacio_i/Desktop/Dados/cds/health_insurance/health_insurance_analysis/'
+        self.home_path              = ''
         self.age_scaler             = pickle.load(open(self.home_path + 'parameter/age_scaler.pkl'      , 'rb'))
         self.vintage_scaler         = pickle.load(open(self.home_path + 'parameter/vintage_scaler.pkl'  , 'rb'))
         self.vehicle_age_encoding   = pickle.load(open(self.home_path + 'parameter/vehicle_age.pkl'     , 'rb'))
