@@ -21,12 +21,6 @@ class health (object):
                  'previously_insured', 'annual_premium', 'vintage', 'driving_license',
                  'vehicle_age', 'vehicle_damage']
         
-
-        df['time_of_customer'] = (df['vintage'].apply(lambda x: 'new' if x < 50 else 'moderate' 
-                                                       if x < 100 else 'medium' 
-                                                       if x < 150 else 'professional' 
-                                                       if x < 200 else 'expert' 
-                                                       if x < 250 else 'old'))
         
         return df
         
@@ -35,6 +29,9 @@ class health (object):
         
         # age
         df1['age'] =  self.age_scaler.transform(df1[['age']].values)
+        
+        # time_of_customer - Label
+        df1['time_of_customer'] = self.time_customer_encoding.transform(df1['time_of_customer'])
         
         # vintage
         df1['vintage'] = self.vintage_scaler.transform(df1[['vintage']].values)
@@ -48,9 +45,6 @@ class health (object):
         
         # vehicle_age - Order Encoding
         df1['vehicle_age'] = self.vehicle_age_encoding.transform(df1['vehicle_age'])
-        
-        # time_of_customer - Label
-        df1['time_of_customer'] = self.time_customer_encoding.transform(df1['time_of_customer'])
         
         # vehicle_damage - Label
         df1['vehicle_damage'] = df1['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
