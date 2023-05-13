@@ -28,7 +28,7 @@ class health (object):
                                                        if x < 200 else 'expert' 
                                                        if x < 250 else 'old'))
         
-        df['vehicle_age'] = df['vehicle_age'].apply(lambda x: '1_year' if x == '< 1 Year' else '1_2_year' if x == '1-2 Year' else '2_years+')
+        
         
         return df
         
@@ -52,7 +52,8 @@ class health (object):
         df1.loc[:, 'region_code'] = df1['region_code'].map(target_region_code)
         
         # vehicle_age - Order Encoding
-        df1['vehicle_age'] = self.vehicle_age_encoding.transform(df1['vehicle_age'])
+        #df1['vehicle_age'] = self.vehicle_age_encoding.transform(df1['vehicle_age'])
+        df1['vehicle_age'] = df1['vehicle_age'].apply(lambda x: '1' if x == '< 1 Year' else '2' if x == '1-2 Year' else '3')
         
         # time_of_customer - Label
         df1['time_of_customer'] = self.time_customer_encoding.transform(df1['time_of_customer'])
