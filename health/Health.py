@@ -1,6 +1,6 @@
 import pandas as pd
 import pickle
-import numpy as pd
+import numpy as np
 
 
 class health (object):
