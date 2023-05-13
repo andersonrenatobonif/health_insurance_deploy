@@ -16,13 +16,13 @@ class health (object):
     
     
 
-    def data_cleaning(self, df):
-        cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
-                 'previously_insured', 'annual_premium', 'vintage', 'driving_license',
-                 'vehicle_age', 'vehicle_damage']
+    # def data_cleaning(self, df):
+    #     cols =  ['id', 'gender', 'age', 'region_code', 'policy_sales_channel',
+    #              'previously_insured', 'annual_premium', 'vintage', 'driving_license',
+    #              'vehicle_age', 'vehicle_damage']
         
         
-        return df
+    #     return df
         
 
     def data_preparation(self, df1):

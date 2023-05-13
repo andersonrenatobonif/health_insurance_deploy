@@ -29,11 +29,11 @@ def health_predict():
         
         pipeline = health()
         
-        df1 = pipeline.data_cleaning(test_raw)
+        #df1 = pipeline.data_cleaning(test_raw)
         
         #df2 = pipeline.feature_engineering(df1)
         
-        df2 = pipeline.data_preparation(df1)
+        df2 = pipeline.data_preparation(test_raw)
         
         df_response = pipeline.get_predictions(model, test_raw, df2)
         
