@@ -22,11 +22,11 @@ class health (object):
         
         df.columns = cols
         
-        df['time_of_customer'] = (df['vintage'].apply(lambda x: 'new' if x < 50 else 'moderate' 
-                                                       if x < 100 else 'medium' 
-                                                       if x < 150 else 'professional' 
-                                                       if x < 200 else 'expert' 
-                                                       if x < 250 else 'old'))
+        # df['time_of_customer'] = (df['vintage'].apply(lambda x: 'new' if x < 50 else 'moderate' 
+        #                                                if x < 100 else 'medium' 
+        #                                                if x < 150 else 'professional' 
+        #                                                if x < 200 else 'expert' 
+        #                                                if x < 250 else 'old'))
         
         
         
@@ -56,7 +56,7 @@ class health (object):
         df1['vehicle_age'] = df1['vehicle_age'].apply(lambda x: '1' if x == '< 1 Year' else '2' if x == '1-2 Year' else '3')
         
         # time_of_customer - Label
-        df1['time_of_customer'] = self.time_customer_encoding.transform(df1['time_of_customer'])
+        #df1['time_of_customer'] = self.time_customer_encoding.transform(df1['time_of_customer'])
         
         # vehicle_damage - Label
         df1['vehicle_damage'] = df1['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
