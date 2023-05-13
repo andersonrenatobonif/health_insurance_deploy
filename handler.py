@@ -1,12 +1,11 @@
 import os
-import numpy as np
 import pickle
 import pandas as pd
 from flask          import Flask, request, Response
 from health.Health  import health
 
 #loading model
-path = ''
+path = 'C:/Users/anderson.bonifacio_i/Desktop/Dados/cds/health_insurance/health_insurance_analysis/'
 model = pickle.load(open(path + 'model/model_health.pkl', 'rb'))
 
 app = Flask(__name__)
@@ -29,11 +28,11 @@ def health_predict():
         
         pipeline = health()
         
-        #df1 = pipeline.data_cleaning(test_raw)
+        df1 = pipeline.data_cleaning(test_raw)
         
         #df2 = pipeline.feature_engineering(df1)
         
-        df2 = pipeline.data_preparation(test_raw)
+        df2 = pipeline.data_preparation(df1)
         
         df_response = pipeline.get_predictions(model, test_raw, df2)
         
@@ -44,5 +43,4 @@ def health_predict():
     	return Response( '{}', status=200, mimetype='application/json' )
 
 if __name__ == '__main__':
-    port = os.environ.get( 'PORT', 5000)
-    app.run(host = '0.0.0.0', port = port)
+    app.run('0.0.0.0', debug=True)
